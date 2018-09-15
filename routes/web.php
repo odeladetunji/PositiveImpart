@@ -17,5 +17,5 @@ Route::get('/', function () {
 
 Route::get('/landingpage', 'LandingPageController@landingpage');
 Route::get('/signuppage', 'signuppageController@signuppage');
-
 Route::get('/loginpage', 'loginpageController@loginpage');
+Route::get('/adminpage', 'adminpageController@adminpage');
