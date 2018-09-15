@@ -20,33 +20,12 @@
 	   <div>
 	   	     <div class="topHeader">
 	   	     	<ul>
-	   	     		<li onclick="showSignUp()">signup</li>
-	   	     		<li onclick="showLogin()">login</li>
-	   	     		<li>About Us</li>
-	   	     		<li>Enterprenuership</li>
-	   	     		<li>Certifications</li>
-	   	     		<li>Economic Empowerment</li>
-	   	     		<li>Mission Vision</li>
-	   	     		<li>Activities</li>
+	   	     		<li onclick="gotoHomePage()">home</li>
+	   	     		<li onclick="gotoSignUpPage()">signup</li>
 	   	     	</ul>
 	   	     </div>
-	   	     <div class="theHead"></div>
+
 	   	     <div class="theBody">
-	   	     	 <div class="certifications">
-	   	     	 	
-	   	     	 </div>
-	   	     	 
-	   	     	 <div class="aboutUs">
-	   	     	 	
-	   	     	 </div>
-
-	   	     	 <div class="ourpartners">
-	   	     	 	
-	   	     	 </div>
-
-	   	     	 <div class="activities">
-	   	     	 	
-	   	     	 </div>
 
 	   	     </div>
 	   	     <div class="theFooter">
@@ -59,11 +38,10 @@
 	   </div>
         <script>
         	// dont forget to use babal script!
-        	window.onload = () => {
-        		function loadContent(){
+        	   function authenticateUser(){
 	        	 	 const theToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 		        	 const xhttp = new XMLHttpRequest();
-		        	       xhttp.open('GET', '/landingpage', true);
+		        	       xhttp.open('POST', '/', true);
 		        	       xhttp.onreadystatechange = () => {
 		        	       	    if (this.readystate == 4 && this.status == 200) {
 		        	       	    	const data = JSON.parse(this.responseText);
@@ -81,15 +59,14 @@
 
         	    }
 
-        	    loadContent();
-        	}
+        	 
 	        	 
-             function showSignUp(){
-             	 window.location = '/signuppage';
+             function gotoHomePage(){
+             	 window.location = '/landingpage';
              }
 
-             function showLogin(){
-             	 window.location = '/loginpage';
+             function gotoSignUpPage(){
+             	 window.location = '/signuppage';
              }
 
         </script>
