@@ -9,6 +9,7 @@
         <base href="http://127.0.0.1:8000/">
 
         <link href="/CSS/landingpage.css" rel="stylesheet" type="text/css">
+        <link href="/CSS/login.css" rel="stylesheet" type="text/css">
         <!-- JQuery -->
         <script src="/js/jquery-3.2.1.min(first).js" type='text/JavaScript'></script>
         <!-- Styles -->
@@ -20,28 +21,26 @@
 	   <div>
 	   	     <div class="topHeader">
 	   	     	<ul>
-	   	     		<li onclick="gotoHomePage()">Home</li>
+	   	     		<li onclick="gotoHomePage()">home</li>
+	   	     		<li onclick="gotoLoginPage()">login</li>
 	   	     	</ul>
 	   	     </div>
-	   	    
+
 	   	     <div class="theBody">
-                  <div class="row">
-                  	    <div class="col-sm-3">
-                  	    	 <div id="noOfVisit">
-                  	    	 	 <p>No of Visitors</p>
-                  	    	 	 <p>5,000</p>
-                  	    	 </div>
-                  	    </div>
-                  	    <div class="col-sm-3">
-                  	    	 <div id="noOfUsers">
-                  	    	 	 <p>No of Users</p>
-                  	    	 	 <p>10,000</p>
-                  	    	 </div>
-                  	    </div>
-                  	    <div class="col-sm-3">
-                  	    	<p>Edit Contents</p>
-                  	    </div>
-                  </div>
+					  <p id="warningMessage">WRONG USERNAME OR PASSWORD</p>
+		              <form class="landLords">
+		              	   <p id="lg">Sign-up</p>
+		                   <input type="text" required id="username" placeholder="Enter username"><br>
+		                   <input type="password" required id="password" placeholder="Enter password"><br>
+		                   <button>submit</button>
+		              </form>
+		              <form method="post" class="landLords1" style="display: none;" name="registerForm" encType="multipart/form-data" action="{{URL::to('/registerLandLord')}}" >
+		                   {{ csrf_field() }}
+		                   <label for=""></label><br>
+		                   <input type="text" required id="username1" name="username"><br>
+		                   <input type="password" required id="password1" name="password"><br>
+		                   <button>submit</button>
+		               </form>
 	   	     </div>
 	   	     <div class="theFooter">
 	   	     	<ul>
@@ -53,11 +52,10 @@
 	   </div>
         <script>
         	// dont forget to use babal script!
-        	window.onload = () => {
-        		function loadContent(){
+        	   function authenticateUser(){
 	        	 	 const theToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 		        	 const xhttp = new XMLHttpRequest();
-		        	       xhttp.open('GET', '/', true);
+		        	       xhttp.open('POST', '/', true);
 		        	       xhttp.onreadystatechange = () => {
 		        	       	    if (this.readystate == 4 && this.status == 200) {
 		        	       	    	const data = JSON.parse(this.responseText);
@@ -75,32 +73,14 @@
 
         	    }
 
-        	    loadContent();
-        	}
-
-        	 function submitContent(){
-        	 		 const theToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-		        	 const xhttp = new XMLHttpRequest();
-		        	       xhttp.open('POST', '/submitContent', true);
-		        	       xhttp.onreadystatechange = () => {
-		        	       	    if (this.readystate == 4 && this.status == 200) {
-		        	       	    	const data = JSON.parse(this.responseText);
-		        	       	    	      console.log(data);
-		        	       	    	      // use data here!
-		        	       	    }
-		        	       }
-
-		        	       xhttp.setRequestHeader('X-CSRF-TOKEN', theToken);
-		                   xhttp.setRequestHeader("X-Requested-With", 'XMLHttpRequest');
-		                   xhttp.setRequestHeader("processData", 'false');
-		                   xhttp.setRequestHeader('cache', 'false');
-		                   xhttp.setRequestHeader("Content-Type", "application/json");
-		                   xhttp.send();
-
-        	 }
+        	 
 	        	 
              function gotoHomePage(){
              	 window.location = '/landingpage';
+             }
+
+             function gotoLoginPage(){
+             	 window.location = '/loginpage';
              }
 
         </script>

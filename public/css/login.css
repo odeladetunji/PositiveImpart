@@ -1,0 +1,101 @@
+* {
+	margin: 0px;
+	padding: 0px;
+    border: box-border;
+    background-color: white;
+    font-family: vadana;
+    background-color: #eeeeee;
+}
+
+.topHeader {
+	background-color: black;
+}
+
+.topHeader ul li {
+	color: white;
+	background-color: black;
+	border: 1px solid red;
+	border-radius: 5px;
+}
+
+.topHeader ul li:hover {
+	background-color: green;
+	color: white;
+}
+
+.theBody {
+	width: 100%;
+	padding-top: 170px;
+
+}
+
+.landLords1 {
+	display: none;
+}
+
+.landLords {
+	width: 40%;
+	background-color: white;
+	margin-top: 20px;
+	margin-bottom: 500px;
+}
+
+form {
+	border: 1px solid black;
+	margin-left: 30%;
+	padding-bottom: 100px;
+	border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 20px;
+}
+
+#lg {
+	margin-bottom: 100px;
+	text-align: center;
+	background-color: #f1f1f1;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	width: 100%;
+	font-size: 20px;
+	border-bottom: 1px solid black;
+}
+
+.landLords button {
+	border: none;
+	background-color: green;
+	color: white;
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-top: 7px;
+	padding-bottom: 7px;
+	float: right;
+	border-radius: 5px;
+	margin-right: 8.5%;
+}
+
+.landlords button:hover {
+	background-color: lightgreen;
+	color: black;
+}
+
+.landLords input {
+	width: 80%;
+	border: 1px solid black;
+	padding: 10px;
+    border-radius: 5px;
+    background-color: #f1f1f1;
+    color: default;
+    margin-left: 7%;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+#warningMessage {
+	background-color: red;
+	color: white;
+	padding: 20px;
+	text-align: center;
+	width: 37%;
+	margin-left: 30%;
+	/*margin-top: 180px;*/
+	display: none;
+}

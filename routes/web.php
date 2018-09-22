@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,3 +18,8 @@ Route::get('/landingpage', 'LandingPageController@landingpage');
 Route::get('/signuppage', 'signuppageController@signuppage');
 Route::get('/loginpage', 'loginpageController@loginpage');
 Route::get('/adminpage', 'adminpageController@adminpage');
+Route::get('/adminpage', 'AdminpageController@adminpage');
+Route::get('/LoadCourses', 'LoadCoursesController@LoadCourses');
+//post routes!!!!
+Route::post('/login', 'StudentPageController@student');
+Route::post('/addACourse', 'AddACourseController@addACourse');
