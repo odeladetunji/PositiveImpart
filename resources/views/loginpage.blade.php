@@ -53,7 +53,9 @@
 	   </div>
         <script>
         	// dont forget to use babal script!
-        	   function authenticateUser(){
+        	   var theForm = document.getElementsByClassName('landLords')[0];
+        	   theForm.onsubmit = function(){
+        	   	     event.preventDefault();
 	        	 	 const theToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 	        	 	    var password = document.getElementById('password').value;
                         var username = document.getElementById('username').value;

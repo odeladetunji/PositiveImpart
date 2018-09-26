@@ -3,27 +3,39 @@
 	padding: 0px;
     border: box-border;
     background-color: #fafafa;
+    font-family: Geneva;
+    padding: 0px;
+}
+
+.container-fluid{
+	padding: 0px;
+}
+
+.landLords1 {
+	margin-top: 20px;
 }
 
 .landLords1 input {
-	padding: 20px;
+	padding: 15px;
 	border-radius: 5px;
 	width: 80%;
+	margin-left: 10%;
 	font-size: 16px;
-	border: 1px solid black;
-	margin-bottom: 5px;
+	border: 1px solid #eeeeee;
+	margin-bottom: 10px;
 	background-color: white !important;
 }
 
 select {
 	border-radius: 5px;
-	width: 86.4%;
+	width: 80.4%;
 	font-size: 16px;
-	border: 1px solid black;
+	border: 1px solid #fafafa;
 	margin-bottom: 5px;
 	padding: 20px !important;
 	height: 55px;
 	background-color: white;
+	margin-left: 10%;
 }
 
 .landLords1 button {
@@ -42,11 +54,14 @@ select {
 }
 
 #textArea {
-	width: 83%;
+	width: 80%;
 	border-radius: 5px;
 	padding: 10px;
 	font-size: 16px;
 	background-color: white;
+	margin-left: 10%;
+	border: 1px solid #eeeeee;
+	padding: 20px;
 }
 
 .noOfVisit {
@@ -163,4 +178,10 @@ select {
 .theBody {
 	margin-top: 50px;
 	margin-bottom: 50px;
+}
+
+#duration {
+	margin-left: 10%;
+	margin-bottom: 10px;
+	border: 1px solid #eeeeee;
 }

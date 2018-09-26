@@ -1,6 +1,7 @@
 <?php
-
 namespace App\Http\Controllers;
+use DB;
+use Storage;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;

@@ -69,7 +69,7 @@
         		 () => {
         		 	       const theToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 		        	       const xhttp = new XMLHttpRequest();
-		        	       xhttp.open('GET', '/login', true);
+		        	       xhttp.open('GET', '/LoadCourses', true);
 		        	       xhttp.onreadystatechange = () => {
 		        	       	    if (this.readystate == 4 && this.status == 200) {
 		        	       	    	const data = JSON.parse(this.responseText);

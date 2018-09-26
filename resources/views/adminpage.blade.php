@@ -10,6 +10,8 @@
 
         <link href="/CSS/landingpage.css" rel="stylesheet" type="text/css">
         <link href="/CSS/admin.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+        <script src="/bootstrap/js/bootstrap.min.js" type="text/JavaScript"></script>
         <!-- JQuery -->
         <script src="/js/jquery-3.2.1.min(first).js" type='text/JavaScript'></script>
         <!-- Styles -->
@@ -25,7 +27,7 @@
 	   	     	</ul>
 	   	     </div>
 	   	    
-	   	     <div class="theBody">
+	   	     <div class="container-fluid theBody">
                   <div class="row">
                   	    <div class="col-sm-3">
                   	    	 <div class="noOfVisit">
@@ -48,7 +50,7 @@
                   	    </div>
                   </div>
                   <div class="theFormCourse">
-          	    		<form method="post" style="display: none;" class="landLords1" name="addACourse" encType="multipart/form-data" action="{{URL::to('/addACourse')}}" >
+          	    		<form method="post" style="display: none;" encType="multipart/form-data" class="landLords1" name="addACourse" action="{{URL::to('/addACourse')}}">
 		                   {{ csrf_field() }}
 		                   <input type="text" placeholder="Course Title" name="title"><br>
 		                   <select name="duration" id="duration">
@@ -71,9 +73,10 @@
 		                   	   <option value="1 year">1 year</option>
 		                   </select><br>
 		                   <input type="text" placeholder="price" name="price"><br>
-		                   <input type="text" name="author" placeholder="teachers names"><br>
+		                   <input type="text" placeholder="Course Code e.g(ECN 504)" name="coursecode"><br>
+		                   <input type="text" name="author" placeholder="Authors names"><br>
 		                   <input type="file" name="picture" placeholder="select picture"><br>
-		                   <textarea name="" id="textArea" cols="30" rows="10" placeholder="write a detail descripton of the content of the course you are creating, write a summary of the course. this content will be displayed went users click on the course"></textarea><br>
+		                   <textarea name="desscription" id="textArea" cols="30" rows="10" placeholder="write a detail descripton of the content of the course you are creating, write a summary of the course. this content will be displayed went users click on the course"></textarea><br>
 		                   <button>submit</button><br>
                         </form> 
 	   	           </div>
@@ -90,18 +93,25 @@
 	   	     	<p>Terms and Policies</p>
 	   	     </div>
 	   </div>
-        <script>
+	   <!-- Load Babel -->
+       <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+       <!-- Your custom script here -->
+       <script type="text/babel"></script>
+        <script type="text/JavaScript">
         	// dont forget to use babal script!
         	window.onload = () => {
         		function loadContent(){
 	        	 	 const theToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 		        	 const xhttp = new XMLHttpRequest();
 		        	       xhttp.open('GET', '/LoadCourses', true);
-		        	       xhttp.onreadystatechange = () => {
-		        	       	    if (this.readystate == 4 && this.status == 200) {
-		        	       	    	const data = JSON.parse(this.responseText);
+		        	       xhttp.onreadystatechange = function() {
+		        	       	    if (this.readyState == 4 && this.status == 200) {
+		        	       	    	const data = JSON.parse(this.responseText).data;
 		        	       	    	      console.log(data);
 		        	       	    	      // use data here!
+		        	       	    	      if (data == false) {
+                                             console.log('its zero');
+		        	       	    	      }
 		        	       	    }
 		        	       }
 
@@ -109,7 +119,7 @@
 		                   xhttp.setRequestHeader("X-Requested-With", 'XMLHttpRequest');
 		                   xhttp.setRequestHeader("processData", 'false');
 		                   xhttp.setRequestHeader('cache', 'false');
-		                   xhttp.setRequestHeader("Content-Type", "application/json");
+		                   xhttp.setRequestHeader("ContentType", "false");
 		                   xhttp.send();
 
         	    }
@@ -117,37 +127,51 @@
         	    loadContent();
         	}
 
+             const courseForm = document.getElementsByClassName('landLords1')[0];
         	 function addACourse(param){
+        	 	     //event.preventDefault();
+        	 	     console.log(param);
         	 		 const theToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-		        	 const xhttp = new XMLHttpRequest();
+        	 		 //const theForm = document.getElementsByClassName('landLords1')[0];
+        	 		 var formData = new FormData(param);
+		        	 var xhttp = new XMLHttpRequest();
 		        	       xhttp.open('POST', '/addACourse', true);
-		        	       xhttp.onreadystatechange = () => {
-		        	       	    if (this.readystate == 4 && this.status == 200) {
-		        	       	    	const data = JSON.parse(this.responseText);
+		        	       xhttp.onreadystatechange = function() {
+		        	       	    if (this.readyState == 4 && this.status == 200) {
+		        	       	    	const data = JSON.parse(this.responseText).data;
 		        	       	    	      console.log(data);
 		        	       	    	      // use data here!
 		        	       	    }
 		        	       }
-
+                           
+                           /*   NOTE
+                           If contentType is not set to false! formData object
+                           will not be loaded properly on the payload of the 
+                           header and this will cause a lot of trouble!
+                           Below server header setup is very inportant!*/
 		        	       xhttp.setRequestHeader('X-CSRF-TOKEN', theToken);
 		                   xhttp.setRequestHeader("X-Requested-With", 'XMLHttpRequest');
 		                   xhttp.setRequestHeader("processData", 'false');
 		                   xhttp.setRequestHeader('cache', 'false');
-		                   xhttp.setRequestHeader("Content-Type", "application/json");
-		                   xhttp.send(param);
+		                   //contentType should always be set to false for formData!
+		                   //just follow the header set up
+		                   //PLease try and document the code on git hub and avoid it
+		                   // again.
+		                   xhttp.setRequestHeader("ContentType", "false");
+		                   xhttp.send(formData);
 
         	 }
-	        	 
+	         
              function gotoHomePage(){
              	 window.location = '/landingpage';
              }
-             
-             theForm.onsubmit = () => {
-             	   event.preventDefault();
-             	   var theForm = document.getElementsByClassName('landLords1')[0];
-             	   var formData = new FormData(theForm);
-                   addACourse(formData);
-             }
+    
+             const theForm = document.getElementsByClassName('landLords1')[0];
+             theForm.addEventListener('submit', function(event){
+             		event.preventDefault();
+             		addACourse(this);
+             		return;
+             }, false);
 
              function showForm(){
              	  const elem = document.getElementsByClassName('landLords1')[0];
@@ -167,7 +191,7 @@
              function showCoursesAvailable(){
                  
              }
-
+        
         </script>
 </body>
 </html>

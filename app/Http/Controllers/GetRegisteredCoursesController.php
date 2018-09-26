@@ -8,10 +8,12 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
-class LandingPageController extends BaseController
+class GetRegisteredCoursesController extends BaseController
 {
-    public function landingpage(Request $request){
-    	return view('landingpage');
+    public function getTheCoursesRegistered(Request $request){
+    	// try inner joins to select two tables
+        $data = DB::select('select * from courses, students');
+    	return response()->json(array('data' => , $data));
     }
 }
 
