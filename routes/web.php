@@ -18,10 +18,13 @@ Route::get('/landingpage', 'LandingPageController@landingpage');
 Route::get('/signuppage', 'SignuppageController@signuppage');
 Route::get('/loginpage', 'LoginpageController@loginpage');
 Route::get('/adminpage', 'AdminpageController@adminpage');
-Route::get('/adminpage', 'AdminpageController@adminpage');
 Route::get('/LoadCourses', 'LoadCoursesController@LoadCourses');
+Route::get('/passwordRecovery', 'PasswordRecoveryController@recovery');
 
 //post routes!!!!
 Route::post('/login', 'StudentPageController@student');
 Route::post('/addACourse', 'AddACourseController@addACourse');
 Route::post('/getRegisteredCourses', 'GetRegisteredCoursesController@getTheCoursesRegistered');
+Route::post('/LogStudentIn', 'LogStudentInController@logStudentIn');
+Route::post('/SignUpStudent', 'SignUpStudentController@signup');
+Route::post('/gotoStudentPage', 'TheStudentPageController@theStudent');

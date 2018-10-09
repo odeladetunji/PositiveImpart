@@ -9,6 +9,7 @@
         <base href="http://127.0.0.1:8000/">
         <link href="/CSS/landingpage.css" rel="stylesheet" type="text/css">
         <link href="/CSS/login.css" rel="stylesheet" type="text/css">
+        
         <!-- JQuery -->
         <script src="/js/jquery-3.2.1.min(first).js" type='text/JavaScript'></script>
         <!-- Styles -->
@@ -32,6 +33,7 @@
 		                   <input type="text" required id="username" placeholder="Enter username"><br>
 		                   <input type="password" required id="password" placeholder="Enter password"><br>
 		                   <button>submit</button>
+		                   <p id="forgetpassword" onclick="gotoPasswordRecoveryPage()">forget password</p>
 		              </form>
 
 		              <form method="post" class="landLords1" style="display: none;" name="registerForm" encType="multipart/form-data" action="{{URL::to('/registerLandLord')}}" >
@@ -63,7 +65,7 @@
                         document.getElementById('username1').value = username;
                         var theData = { "username": username, "password": password, "token": theToken }
 		        	    const xhttp = new XMLHttpRequest();
-		        	       xhttp.open('POST', '/login', true);
+		        	       xhttp.open('POST', '/logStudentIn', true);
 		        	       xhttp.onreadystatechange = () => {
 		        	       	    if (this.readystate == 4 && this.status == 200) {
 		        	       	    	const data = JSON.parse(this.responseText);
@@ -99,6 +101,10 @@
 
              function gotoSignUpPage(){
              	 window.location = '/signuppage';
+             }
+
+             function gotoPasswordRecoveryPage(){
+             	 window.location = '/passwordRecovery';
              }
 
         </script>

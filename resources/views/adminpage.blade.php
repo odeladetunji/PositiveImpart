@@ -27,7 +27,7 @@
 	   	     	</ul>
 	   	     </div>
 	   	    
-	   	     <div class="container-fluid theBody">
+	   	     <div class="container">
                   <div class="row">
                   	    <div class="col-sm-3">
                   	    	 <div class="noOfVisit">
@@ -50,6 +50,7 @@
                   	    </div>
                   </div>
                   <div class="theFormCourse">
+                  	    <p id="notice" style="display: none;">bla bla bla ...</p>
           	    		<form method="post" style="display: none;" encType="multipart/form-data" class="landLords1" name="addACourse" action="{{URL::to('/addACourse')}}">
 		                   {{ csrf_field() }}
 		                   <input type="text" placeholder="Course Title" name="title"><br>
@@ -75,14 +76,17 @@
 		                   <input type="text" placeholder="price" name="price"><br>
 		                   <input type="text" placeholder="Course Code e.g(ECN 504)" name="coursecode"><br>
 		                   <input type="text" name="author" placeholder="Authors names"><br>
-		                   <input type="file" name="picture" placeholder="select picture"><br>
-		                   <textarea name="desscription" id="textArea" cols="30" rows="10" placeholder="write a detail descripton of the content of the course you are creating, write a summary of the course. this content will be displayed went users click on the course"></textarea><br>
+		                   <p class="nott">Select picture for advert below</p>
+		                   <input type="file" name="advertpicture" required><br>
+		                   <p class="nott">Select Slides for Course Content below<br><span style="color: maroon; background-color: transparent;">PLEASE ENSURE TO SELECT ALL THE SLIDES AT ONCE</span></p>
+		                   <input type="file" name="pictures[]" placeholder="select picture" multiple><br>
+		                   <textarea name="description" class="textArea" cols="30" rows="10" placeholder="write a summary of this course you are creating, this summary will be displayed when users click on the course (write a smart summary and not the entire thing!!)"></textarea><br>
 		                   <button>submit</button><br>
                         </form> 
 	   	           </div>
-	   	           <div class="editContentOfCourses">
-	   	           	    
-	   	           </div>
+	   	     </div>
+	   	     <div class="editContentOfCourses" style="display: flex;">
+	   	           	   <p id="mark"></p>
 	   	     </div>
 	   	     
 	   	     <div class="theFooter">
@@ -98,10 +102,9 @@
        <!-- Your custom script here -->
        <script type="text/babel"></script>
         <script type="text/JavaScript">
-        	// dont forget to use babal script!
         	window.onload = () => {
         		function loadContent(){
-	        	 	 const theToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+	        	 	 const theToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content'); ///
 		        	 const xhttp = new XMLHttpRequest();
 		        	       xhttp.open('GET', '/LoadCourses', true);
 		        	       xhttp.onreadystatechange = function() {
@@ -110,8 +113,101 @@
 		        	       	    	      console.log(data);
 		        	       	    	      // use data here!
 		        	       	    	      if (data == false) {
-                                             console.log('its zero');
+                                             console.log('its false (zero)');
 		        	       	    	      }
+            
+                                          var container = {};
+                                          var finalObject = '';
+                                          var count = 0;
+                                          var objArray = [];
+                                          
+                                          function useParam(param){
+                                                  	  	                                                 	  	    	 
+											 var div = '<div class="bkImage" style="background-image: url(/storage/images/' + param.advertpicture + ')" class="coarse"></div>';
+                          	  	                                                  	                                                 
+											 var li =  '<ul>' +
+											              '<li>' + param.title + '</li>' +
+											              '<li class="author">Authors</li>' +
+											              '<li>' + param.author + '</li>'+ 
+											              '<li class="pricing">' + param.price + '</li>' +
+											           '</ul>';
+
+											 var outerContainer = '<div class="cont">' + div + li + '</div>';
+                                              //objArray.push(outerContainer);
+											      finalObject = finalObject + outerContainer;
+
+                                              	  	   
+                                          }
+
+		        	       	    	      function useData(param){
+                                              for (var i = 0; i < param.length; i++) {
+                                              	 useParam(param[i]);
+                                              }
+		        	       	    	      }
+
+		        	       	    	    
+                                           var parentContainer = [];
+	                                       var child = {};
+	                                       var counter = 0;
+	                                       var code;
+	                                       var ashKey = 'ABC|@|';
+
+		        	       	    	      function loopRawData(){
+		        	       	    	      	  
+		        	       	    	      	   for (var i = 0; i < data.length; i++) {
+
+                                                          if (data[i].picture == null) {
+                                                          	child.advertpicture = data[i].advertpicture;
+                                                          }
+
+                                                          child[ashKey.concat(data[i].picture)] = data[i].picture;
+                                                          
+                                                          if (data[i + 1] != undefined) {
+                                                          	  
+                                                              if (data[i].coursecode != data[i + 1].coursecode) {
+                                                                  child.author = data[i - 1].author;
+                                                     	          child.title = data[i - 1].title;
+                                                                  child.coursecode = data[i - 1].coursecode;
+                                                                  child.description = data[i - 1].description;
+                                                                  child.price = data[i - 1].price;
+                                                                  child.duration = data[i - 1].duration;
+                                                                  child[ashKey.concat(data[i - 1].picture)] = data[i - 1].picture;
+                                                              	  //child = {}
+                                                              	  console.log('pp');
+                                                              	 // break;
+                                                              	  parentContainer.push(child);
+                                                              	  console.log(parentContainer)
+                                                              	  child = {}
+                                                              }
+                                                          }
+                                                          
+                                                          if (data[i + 1] == undefined) {
+                                                          	 child.author = data[i - 1].author;
+                                                     	          child.title = data[i - 1].title;
+                                                                  child.coursecode = data[i - 1].coursecode;
+                                                                  child.description = data[i - 1].description;
+                                                                  child.price = data[i - 1].price;
+                                                                  child.duration = data[i - 1].duration;
+                                                                  child[ashKey.concat(data[i - 1].picture)] = data[i - 1].picture;
+                                                              	  //child = {}
+                                                           	 parentContainer.push(child);
+
+                                                          }
+                                                             
+                                                    
+		        	       	    	      	         if (data.length - 1 == i) {
+		        	       	    	      	         	console.log('man');
+		        	       	    	      	         	useData(parentContainer);
+		        	       	    	      	         	setTimeout(function(){
+		        	       	    	      	         		    console.log('llll');
+		        	       	    	      	         	    	var marker = document.getElementById('mark');
+		        	       	    	      	         			$(finalObject).insertBefore('#mark');
+		        	       	    	      	         			//console.log(finalObject);
+		        	       	    	      	         	}, 50);
+		        	       	    	      	         }
+		        	       	    	           }
+		        	       	    	      }
+		        	       	    	      loopRawData();
 		        	       	    }
 		        	       }
 
@@ -138,9 +234,13 @@
 		        	       xhttp.open('POST', '/addACourse', true);
 		        	       xhttp.onreadystatechange = function() {
 		        	       	    if (this.readyState == 4 && this.status == 200) {
-		        	       	    	const data = JSON.parse(this.responseText).data;
+		        	       	        //const data = JSON.parse(this.responseText).message;
+		        	       	    	var thisElemement = document.getElementById('notice');
+		        	       	    	    thisElemement.style.display = 'block';
 		        	       	    	      console.log(data);
-		        	       	    	      // use data here!
+		        	       	    	      setTimeout(function(){
+		        	       	    	      	 thisElemement.style.display = 'none';
+		        	       	    	      }, 5000);
 		        	       	    }
 		        	       }
                            
@@ -157,7 +257,7 @@
 		                   //just follow the header set up
 		                   //PLease try and document the code on git hub and avoid it
 		                   // again.
-		                   xhttp.setRequestHeader("ContentType", "false");
+		                   xhttp.setRequestHeader("ContentType", "application/x-www-form-urlencoded");
 		                   xhttp.send(formData);
 
         	 }
@@ -182,7 +282,7 @@
                   if (value == 'block') {
                   	 elem.style.display = 'none';
                   }
-
+                  
                   if (value == '') {
                   	 elem.style.display = 'block';
                   }

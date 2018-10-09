@@ -1,4 +1,4 @@
-'<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	    <meta charset="utf-8">
@@ -7,7 +7,6 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>Positive Impart</title>
         <base href="http://127.0.0.1:8000/">
-
         <link href="/CSS/landingpage.css" rel="stylesheet" type="text/css">
         <link href="/CSS/login.css" rel="stylesheet" type="text/css">
         <!-- JQuery -->
@@ -22,25 +21,26 @@
 	   	     <div class="topHeader">
 	   	     	<ul>
 	   	     		<li onclick="gotoHomePage()">home</li>
-	   	     		<li onclick="gotoLoginPage()">login</li>
+	   	     		<li onclick="gotoSignUpPage()">signup</li>
 	   	     	</ul>
 	   	     </div>
 
 	   	     <div class="theBody">
-					  <p id="warningMessage">Ooops!! User Already Exit</p>
+		              <p id="Check your email for your password!!!"></p>
 		              <form class="landLords">
-		              	   <p id="lg">Sign-up</p>
-		                   <input type="text" required id="username" placeholder="Enter username"><br>
-		                   <input type="password" required id="password" placeholder="Enter password"><br>
+		              	   <p id="lg" style="color: green;">Recover Your Password!!</p>
+		                   <input type="email" required id="username" placeholder="Email"><br>
 		                   <button>submit</button>
 		              </form>
-		              <form method="post" class="landLords1" style="display: none;" name="registerForm" encType="multipart/form-data" action="{{URL::to('/gotoStudentPage')}}" >
+
+		              <form method="post" class="landLords1" style="display: none;" name="registerForm" encType="multipart/form-data" action="{{URL::to('/registerLandLord')}}" >
 		                   {{ csrf_field() }}
 		                   <label for=""></label><br>
 		                   <input type="text" required id="username1" name="username"><br>
 		                   <input type="password" required id="password1" name="password"><br>
 		                   <button>submit</button>
-		               </form>
+		              </form>
+		           
 	   	     </div>
 	   	     <div class="theFooter">
 	   	     	<ul>
@@ -55,30 +55,29 @@
         	   var theForm = document.getElementsByClassName('landLords')[0];
         	   theForm.onsubmit = function(){
         	   	     event.preventDefault();
-	        	 	 var theToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-	        	 	 var username = document.getElementById('username').value;
-	        	 	 var password = document.getElementById('password').value;
-	        	 	 document.getElementById('username1').value = username;
-	        	 	 document.getElementById('password1').value = password;
-	        	 	 var data = {'username': username, 'password': password}
-		        	 var xhttp = new XMLHttpRequest();
-		        	       xhttp.open('POST', '/SignUpStudent', true);
-		        	       xhttp.onreadystatechange = function(){
-		        	       	    if (this.readyState == 4 && this.status == 200) {
-		        	       	    	var data = JSON.parse(this.responseText);
+	        	 	 const theToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+	        	 	    var password = document.getElementById('password').value;
+                        var username = document.getElementById('username').value;
+                        document.getElementById('password1').value = password;
+                        document.getElementById('username1').value = username;
+                        var theData = { "username": username, "password": password, "token": theToken }
+		        	    const xhttp = new XMLHttpRequest();
+		        	       xhttp.open('POST', '/passwordRecovery', true);
+		        	       xhttp.onreadystatechange = () => {
+		        	       	    if (this.readystate == 4 && this.status == 200) {
+		        	       	    	const data = JSON.parse(this.responseText);
 		        	       	    	      console.log(data);
-		        	       	    	      if (data.message == false) {
-		        	       	    	      		var wan = document.getElementById('warningMessage');
-		        	       	    	      		    wan.style.display = 'block';
-		        	       	    	      		setTimeout(function(){
-		        	       	    	      			wan.style.display = 'none';
-		        	       	    	      		}, 5000);
+		        	       	    	      if (data == false) {
+		        	       	    	      	 $('#warningMessage').show();
+		        	       	    	      	 setTimeout((param) => {
+		        	       	    	      	 	$('#warningMessage').hide();
+		        	       	    	      	 }, 5000);
 		        	       	    	      }
 
-		        	       	    	      if (data.message == true) {
-		        	       	    	      		document.getElementsByClassName('landLords1')[0].submit();
+		        	       	    	      if (data == true) {
+		        	       	    	      	 $('landLords1').submit();
 		        	       	    	      }
-
+		        	       	    	      // use data here!
 		        	       	    }
 		        	       }
 
@@ -87,9 +86,9 @@
 		                   xhttp.setRequestHeader("processData", 'false');
 		                   xhttp.setRequestHeader('cache', 'false');
 		                   xhttp.setRequestHeader("Content-Type", "application/json");
-		                   xhttp.send(JSON.stringify(data));
-        	    }
+		                   xhttp.send(JSON.stringify(theData));
 
+        	    }
 
         	 
 	        	 
@@ -97,8 +96,8 @@
              	 window.location = '/landingpage';
              }
 
-             function gotoLoginPage(){
-             	 window.location = '/loginpage';
+             function gotoSignUpPage(){
+             	 window.location = '/signuppage';
              }
 
         </script>

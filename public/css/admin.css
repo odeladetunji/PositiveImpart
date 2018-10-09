@@ -7,6 +7,13 @@
     padding: 0px;
 }
 
+.row {
+	margin-left: 0px;
+	margin-right: 0px;
+	padding-right: 0px;
+	padding-left: 0px;
+}
+
 .container-fluid{
 	padding: 0px;
 }
@@ -53,7 +60,7 @@ select {
 	color: default;
 }
 
-#textArea {
+.textArea {
 	width: 80%;
 	border-radius: 5px;
 	padding: 10px;
@@ -184,4 +191,55 @@ select {
 	margin-left: 10%;
 	margin-bottom: 10px;
 	border: 1px solid #eeeeee;
+}
+
+.nott {
+	background-color: lightgreen;
+	text-align: center;
+	padding: 20px;
+	width: 80%;
+	margin-left: 10%;
+	font-weight: bold;
+}
+
+.coarse {
+	margin-top: 30px;
+	background-color: white;
+	margin-left: 10%;
+}
+
+.editContentOfCourses {
+	flex-wrap: wrap;
+}
+
+.cont {
+	width: 270px;
+	margin-left: 50px;
+    border: 1px solid black;
+	margin-bottom: 20px;
+	border-radius: 5px;
+	background-color: cyan;
+}
+
+
+.cont ul li {
+	list-style-type: none;
+	text-align: center;
+	background-color: aqua;
+}
+
+.bkImage {
+	height: 200px;
+	background-size: cover;
+	background-position: center;
+}
+
+.author {
+	font-size: 14px;
+	padding-top: 20px;
+}
+
+.pricing {
+	padding-top: 30px;
+
 }

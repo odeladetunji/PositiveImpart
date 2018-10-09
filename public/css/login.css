@@ -25,8 +25,6 @@
 
 .theBody {
 	width: 100%;
-	padding-top: 170px;
-
 }
 
 .landLords1 {
@@ -70,6 +68,7 @@ form {
 	float: right;
 	border-radius: 5px;
 	margin-right: 8.5%;
+	font-size: 17px;
 }
 
 .landlords button:hover {
@@ -90,7 +89,7 @@ form {
 }
 
 #warningMessage {
-	background-color: red;
+	background-color: maroon;
 	color: white;
 	padding: 20px;
 	text-align: center;
@@ -98,4 +97,23 @@ form {
 	margin-left: 30%;
 	/*margin-top: 180px;*/
 	display: none;
+}
+
+#forgetpassword {
+    text-decoration: underline;
+    color: maroon;
+    font-size: 17px;
+    padding: 10px;
+    margin-top: 50px;
+    padding-left: 10px;
+    background-color: white;
+    cursor: pointer;
+    width: 80%;
+    margin-left: 7%;
+}
+
+#forgetpassword:hover {
+	background-color: maroon;
+	color: white;
+	border-radius: 5px;
 }

@@ -8,11 +8,12 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
-class LoginpageController extends BaseController
-{
-    public function loginpage(Request $request){	
-        	return view('loginpage');
-    }
+class PasswordRecoveryController extends BaseController
+{ 
+	    public function recovery(Request $request){
+	    	return view('passwordRecovery');
+    	}
 }
+
 
 
