@@ -103,7 +103,7 @@
        <script type="text/babel"></script>
         <script type="text/JavaScript">
         	window.onload = () => {
-        		function loadContent(){
+        	  	function loadContent(){
 	        	 	 const theToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content'); ///
 		        	 const xhttp = new XMLHttpRequest();
 		        	       xhttp.open('GET', '/LoadCourses', true);
@@ -211,7 +211,7 @@
 		        	       	    }
 		        	       }
 
-		        	       xhttp.setRequestHeader('X-CSRF-TOKEN', theToken);
+		        	         xhttp.setRequestHeader('X-CSRF-TOKEN', theToken);
 		                   xhttp.setRequestHeader("X-Requested-With", 'XMLHttpRequest');
 		                   xhttp.setRequestHeader("processData", 'false');
 		                   xhttp.setRequestHeader('cache', 'false');

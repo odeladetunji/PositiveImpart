@@ -1,28 +1,68 @@
 * {
 	margin: 0px;
 	padding: 0px;
-    border: box-border;
+    box-sizing: border-box;
     background-color: white;
 }
 
 .topHeader {
-	width: 100%;
 	padding-top: 30px;
 	padding-bottom: 60px;
-	background-color: white;
+	background-color: black;
 }
 
-.topHeader ul {
+.headCover h1 {
+	background-color: transparent;
+	text-align: center;
+	color: white;
+	margin-top: 10px;
+	font-size: 90px;
+	width: 100%;
+}
 
+.headCover h3 {
+	padding: 30px;
+	background-color: white;
+	border-radius: 5px;
+	border: none;
+	margin-right: auto;
+	margin-left: auto;
+	font-size: 60px;
+	color: purple;
+	width: 170px;
+	padding-left: 45px;
+	height: 125px;
+	margin-top: 200px;
+	font-weight: bold;
+}
+
+.headCover p {
+	color: white;
+	font-size: 50px;
+	text-align: center;
+}
+
+.headCover {
+	background-color: transparent;
+}
+
+.theHead {
+	background-position: center;
+	background-size: cover;
+}
+
+.theHead p {
+	background-color: transparent;
 }
 
 .topHeader ul li {
     display: inline-block;
     padding: 7px 10px;
-    background-color: white;
+    background-color: black;
     margin-left: 5px;
     float: right;
     cursor: pointer;
+    color: white;
 }
 
 .topHeader ul {
@@ -53,11 +93,36 @@
 }
 
 .theHead {
-	height: 600px;
-	width: 100%;
+	height: 900px;
+}
+
+.coarse {
+	margin-top: 30px;
+	background-color: white;
+	margin-left: 10%;
+}
+
+.bkImage {
+	height: 200px;
 	background-size: cover;
 	background-position: center;
-	background-color: #fafafa;
+}
+
+.cont {
+	width: 270px;
+	margin-left: 50px;
+    border: 1px solid black;
+	margin-bottom: 20px;
+	border-radius: 5px;
+	background-color: cyan;
+}
+
+.certifications {
+	background-color: purple;
+}
+
+li {
+	list-style-type: none;
 }
 
 
