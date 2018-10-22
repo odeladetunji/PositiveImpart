@@ -106,6 +106,23 @@
 	height: 200px;
 	background-size: cover;
 	background-position: center;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+}
+
+.cont ul li{
+    text-align: center;
+    padding: 10px;
+    color: purple;
+    cursor: pointer;
+}
+
+.author {
+	padding-bottom: 0px !important;
+}
+
+.authorsName {
+	padding-top: 0px !important;
 }
 
 .cont {
@@ -114,15 +131,109 @@
     border: 1px solid black;
 	margin-bottom: 20px;
 	border-radius: 5px;
-	background-color: cyan;
+	background-color: white;
+	border-top-right-radius: 6px;
+	border-top-left-radius: 6px;
+	border: none;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .certifications {
+	padding-top: 70px;
+	padding-bottom: 70px;
 	background-color: purple;
+	flex-wrap: wrap;
 }
 
 li {
 	list-style-type: none;
+}
+
+.certifications h3 {
+	color: white;
+	background-color: transparent;
+	width: 100%;
+	font-size: 60px;
+	margin-top: 40px;
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+.ourpartners {
+	background-color: #EFF5F5;
+	padding-bottom: 50px;
+}
+
+.ourpartners h1 {
+	background-color: transparent;
+	width: 100%;
+	text-align: center;
+	padding-top: 30px;
+    font-size: 60px;
+    font-weight: bold;
+    color: black;
+}
+
+.ourpartners ul li {
+	background-color: #EFF5F5;
+	font-size: 25px;
+	list-style-type: none;
+	display: inline-block;
+	padding: 20px;
+	color: #93A9A8;
+}
+
+.ourpartners ul {
+	padding-left: 30px;
+	background-color: #EFF5F5;
+}
+
+.aboutUs {
+	background-color: purple;
+}
+
+.aboutUs .innerDiv {
+	width: 100%;
+	padding-top: 70px;
+	padding-bottom: 50px;
+	background-color: rgb(0,0,6); /* Fallback color */
+    background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+}
+
+.innerDiv h1 {
+	text-align: center;
+	font-weight: bold;
+	font-size: 60px;
+    background-color: transparent;
+    color: white;
+}
+
+.activities_Head {
+   background-color: #B264AA;
+}
+
+.activities_Head .activitiesHeading {
+    width: 100%;
+    background-color: rgb(0,0,5); /* Fallback color */
+    background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+}
+
+.activities_Head .activitiesHeading h1 {
+	padding-top: 70px;
+	color: white;
+	text-align: center;
+	font-weight: bold;
+	font-size: 40px;
+	background-color: transparent;
+}
+
+.activities {
+	background-color: #B264AA;
+}
+
+.activities .info {
+	background-color: rgb(0,0,5); /* Fallback color */
+    background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
 }
 
 

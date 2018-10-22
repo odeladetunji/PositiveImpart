@@ -128,7 +128,7 @@
 											 var li =  '<ul>' +
 											              '<li>' + param.title + '</li>' +
 											              '<li class="author">Authors</li>' +
-											              '<li>' + param.author + '</li>'+ 
+											              '<li class="authorsName">' + param.author + '</li>'+ 
 											              '<li class="pricing">' + param.price + '</li>' +
 											           '</ul>';
 

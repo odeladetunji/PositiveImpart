@@ -32,20 +32,43 @@
 	   	     	  </div>
 	   	     </div>
 	   	     <div class="theBody">
-	   	     	 <div class="certifications">
+	   	     	 <div class="certifications" style="display: flex;">
+	   	     	 	<h3>New Courses!</h3>
 	   	     	 	<p id="mark"></p>
 	   	     	 </div>
 	   	     	 
 	   	     	 <div class="aboutUs">
-	   	     	 	
+	   	     	 	 <div class="innerDiv">
+	   	     	 	 	 <h1>Who We Are!</h1>
+	   	     	 	 </div>
 	   	     	 </div>
 
 	   	     	 <div class="ourpartners">
-	   	     	 	
+	   	     	 	 <h1>Our Partners</h1>
+	   	     	 	 <ul>
+	   	     	 	 	<li>University of Texilla, Guayana</li>
+	   	     	 	 	<li>Middlessex University, UK.</li>
+	   	     	 	 	<li>University of Ibadan, Nigeria</li>
+	   	     	 	 </ul>
 	   	     	 </div>
-
+                 <div class="activities_Head">
+                 	  <div class="activitiesHeading">
+                 	  	   <h1>Keep the Following Dates ...</h1>
+                 	  </div>
+                 </div>
 	   	     	 <div class="activities">
-	   	     	 	
+	   	     	 	  <div class="col-sm-3 info">
+	   	     	 	  	
+	   	     	 	  </div>
+	   	     	 	  <div class="col-sm-3 info">
+	   	     	 	  	
+	   	     	 	  </div>
+	   	     	 	  <div class="col-sm-3 info">
+	   	     	 	  	
+	   	     	 	  </div>
+	   	     	 	  <div class="col-sm-3 info">
+	   	     	 	  	
+	   	     	 	  </div>
 	   	     	 </div>
 
 	   	     </div>
